@@ -1,0 +1,20 @@
+{
+  "name": "hackerman",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack src/index.js --output bin/app.js -d --watch",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sami Kolari - Hackerman",
+  "license": "ISC",
+  "dependencies": {
+    "mithril": "2.0.0-rc.7",
+    "throttle-debounce": "2.1.0"
+  },
+  "devDependencies": {
+    "webpack": "4.35.2",
+    "webpack-cli": "3.3.5"
+  }
+}
