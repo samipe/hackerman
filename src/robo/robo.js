@@ -175,6 +175,7 @@ var container, camera, scene, renderer, mouseX = 0,
     delta,
     running = false
 
+document.getElementById('robo').style.height = window.innerWidth > 900 ? '900px' : `${window.innerWidth}px`
 init()
 animate()
 running = true
