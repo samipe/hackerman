@@ -175,10 +175,6 @@ var container, camera, scene, renderer, mouseX = 0,
     delta,
     running = false
 
-setInterval(() => {
-    if (!running && window.navBarTop < 300) {
-        init()
-        animate()
-        running = true
-    }
-}, 500)
+init()
+animate()
+running = true

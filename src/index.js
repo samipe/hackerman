@@ -15,7 +15,7 @@ const Navbar = {
 
 const Content = {
     view: () => m('div', [
-        m('h3', {style: { textAlign: 'center' }}, "Expert in high performance graphics and animations on web sites")
+        m('h3', {style: { textAlign: 'center' }}, "I should do a proper web site. Meanwhile, enjoy this robot.")
     ])
 }
 

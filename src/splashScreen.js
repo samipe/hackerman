@@ -140,9 +140,9 @@ const SplashTitle = {
 }
 
 const Background = {
-    view: () => m('div', { style: { width: '100%', height: '100%' }}, [
-        m("img", { src: 'src/galaxy.jpg', style: { width: "100%", height: "100%", objectFit: 'cover' } }),
-        m("div.fade-out", { style: { position: 'absolute', top: 0, width: '100%', height: '100%', zIndex: 2, backgroundColor: 'black' }})
+    view: () => m('div', { style: { width: '100%', height: '100vh' }}, [
+        m("img", { src: 'src/galaxy.jpg', style: { width: "100%", height: "100vh", objectFit: 'cover' } }),
+        m("div.fade-out", { style: { position: 'absolute', top: 0, width: '100%', height: '100vh', zIndex: 2, backgroundColor: 'black' }})
     ])
 }
 
