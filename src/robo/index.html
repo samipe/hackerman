@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Sami Kolari</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="js/three.min.js"></script>
+		<script src="js/gyronorm.complete.min.js"></script>
+
+		<style>
+			body {
+				background-color: #ddd;
+				color: #fff;
+				margin: 0px;
+				overflow: hidden;
+                height: 100%;
+			}
+            #roboBox {
+                margin: auto;
+                text-align: center;
+            }
+            
+            #headerText {
+                text-align: center;
+                background-color: #111111;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+            
+		</style>
+
+        <script>
+        document.ontouchmove = function(event){
+    event.preventDefault();
+}
+        </script>
+        
+<script id="vertexShader" type="x-shader/x-vertex">
+varying vec2 vUv;
+void main() {
+  vUv = uv;
+  gl_Position = projectionMatrix * modelViewMatrix * vec4(position,1.0);
+}
+  </script>
+
+<script id="fragmentShader" type="x-shader/x-fragment">
+// Author @patriciogv - 2015
+// http://patriciogonzalezvivo.com
+// https://www.shadertoy.com/view/MlfXzN
+// Modified by 2Pha
+
+uniform vec3 colour;
+uniform float rows;
+uniform float glow;
+uniform float glowRadius;
+uniform float charDetail;
+uniform float speed;
+uniform float iGlobalTime;
+varying vec2 vUv;
+
+float random(in float x){
+    return fract(sin(x)*43758.5453);
+}
+
+float random(in vec2 st){
+    return fract(sin(dot(st.xy ,vec2(12.9898,78.233))) * 23758.5453);
+}
+
+float randomChar(in vec2 outer,in vec2 inner){
+    float grid = charDetail;
+    vec2 margin = vec2(-.2,.05);
+    float seed = 23.;
+    vec2 borders = step(margin,inner)*step(margin,1.-inner);
+    return step(.5,random(outer*seed+floor(inner*grid))) * borders.x * borders.y;
+}
+
+vec3 matrix(in vec2 st){
+    vec2 ipos = floor(st*rows)+vec2(0.1,0.);
+
+    ipos += vec2(.0,floor(iGlobalTime*speed*random(ipos.x)));
+
+    vec2 fpos = fract(st*rows);
+    vec2 center = (.5-fpos);
+
+    float pct = random(ipos);
+    float glowamount = (glowRadius-dot(center,center)*3.)*glow;
+
+    return vec3(randomChar(ipos,fpos) * pct * glowamount) * colour;
+}
+
+void main() {
+    gl_FragColor = vec4(matrix(vUv),0.27);
+}
+  </script>
+
+
+
+	</head>
+
+	<body>
+
+        
+<script src="js/robo.min.js"></script>
+
+
+
+	</body>
+</html>

@@ -111,10 +111,18 @@ h1 {
   margin: 0;
 }
 h2 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-family: "Titillium Web", sans-serif;
-  letter-spacing: 12px;
   line-height: 1.4;
+}
+h3 {
+  font-size: 1.3rem;
+  font-family: "Titillium Web", sans-serif;
+  line-height: 1.4;
+}
+
+.spread {
+  letter-spacing: 12px;
 }
 
 .glow {
@@ -166,7 +174,7 @@ h2 {
 }
 
 .fade-out {
-  animation: fade-out 3s forwards;
+  animation: fade-out 2s forwards;
   animation-timing-function: cubic-bezier(0.6, 0, 0.3, 1);
 }
 @keyframes fade-out {
@@ -175,5 +183,18 @@ h2 {
   }
   to {
     opacity: 0;
+  }
+}
+
+.fade-in-quick {
+  animation: fade-in-quick .3s;
+  animation-timing-function: cubic-bezier(0.6, 0, 0.3, 1);
+}
+@keyframes fade-in-quick {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
